@@ -8,7 +8,9 @@ cache: pip
 install:
   - pip install -r requirements.txt
   - pip install coveralls
-script: 
+env:
+  - PYTHONPATH=$TRAVIS_BUILD_DIR/debug:$PYTHONPATH
+script:
   nosetests --verbose --with-coverage --cover-package=macros tests
 after_success:
   coveralls
