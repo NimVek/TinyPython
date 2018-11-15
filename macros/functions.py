@@ -80,15 +80,4 @@ def getopts(args, opts):
     pprint.pprint(inword)
 
     pprint.pprint((outdict,args))
-  pprint.pprint(("ENDE",outdict,args))
-
-
-getopts(" -f -p12332 -rghghg -- ende", "fp#r:")
-getopts(" -f -p12332 -rghghg = ende", "fp#r:")
-getopts(" -fp12332 -rghghg=ende", "fp#r:")
-getopts(" -r'ggg'=ende", "fp#r:")
-getopts("-a -b -n5 -s\"can't stop\" -- whiz = bang biff","abn#s:")
-getopts("-a -b -n5 -s'can\\'t stop' whiz = bang biff","abn#s:")
-getopts("-n5 -ba -s`can't stop` whiz = bang biff","abn#s:")
-getopts("-as\"can't stop\" -bn5 whiz = bang biff","abn#s:")
-
+  return (outdict,args)

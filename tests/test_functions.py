@@ -4,15 +4,10 @@ from nose.tools import *
 from macros.functions import *
 
 def test_getopts():
-  pass
-#  assert_equals(
+  expected = ({ 'a': True, 'b': True, 'n': 5, 's': "can't stop" }, "whiz = bang biff")
+  assert_equals(getopts("-a -b -n5 -s\"can't stop\" -- whiz = bang biff","abn#s:"), expected)
+#  assert_equals(getopts("-a -b -n5 -s'can\\'t stop' whiz = bang biff","abn#s:"), expected)
+  assert_equals(getopts("-n5 -ba -s`can't stop` whiz = bang biff","abn#s:"), expected)
+  assert_equals(getopts("-as\"can't stop\" -bn5 whiz = bang biff","abn#s:"), expected)
 
-#getopts(" -f -p12332 -rghghg -- ende", "fp#r:")
-#getopts(" -f -p12332 -rghghg = ende", "fp#r:")
-#getopts(" -fp12332 -rghghg=ende", "fp#r:")
-#getopts(" -r'ggg'=ende", "fp#r:")
-#getopts("-a -b -n5 -s\"can't stop\" -- whiz = bang biff","abn#s:")
-#getopts("-a -b -n5 -s'can\\'t stop' whiz = bang biff","abn#s:")
-#getopts("-n5 -ba -s`can't stop` whiz = bang biff","abn#s:")
-#getopts("-as\"can't stop\" -bn5 whiz = bang biff","abn#s:")
-
+  assert_equals(getopts('-t"foo"=bar',"t:"), ({ 't': 'foo'}, "=bar"))
