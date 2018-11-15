@@ -1,22 +1,27 @@
 # This is a dummy tf module to allow module testing outside of TinyFugue.
 
-def err( argstr ):
-	print("tf.err  |", argstr)
 
-def eval( argstr ):
-	print("tf.eval |", argstr)
-	return ""
+def err(argstr):
+    print("tf.err  |", argstr)
 
-def getvar( var, default="" ):
-	print("tf.getvar |", var, default)
-	return default
 
-def out( argstr ):
-	print("tf.out  |", argstr)
+def eval(argstr):
+    print("tf.eval |", argstr)
+    return ""
 
-def send( text, world="<current>" ):
-	print("tf.send %s |" % test)
-	
+
+def getvar(var, default=""):
+    print("tf.getvar |", var, default)
+    return default
+
+
+def out(argstr):
+    print("tf.out  |", argstr)
+
+
+def send(text, world="<current>"):
+    print("tf.send %s |" % test)
+
+
 def world():
-	return "Dummy"
-
+    return "Dummy"
