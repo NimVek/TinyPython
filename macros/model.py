@@ -1,11 +1,15 @@
 import inspect
 
+import pprint
+
 
 class MetaCommand(type):
     def __call__(cls, *args, **kwargs):
         if len(inspect.stack()) < 2:
+            cmd, *tmp = args[0].split(None, 1)
+            line = tmp[0] if tmp else ''
             options = getattr(cls, 'OPTIONS', None)
-            tmp = cls.parse(args[0], None)
+            tmp = cls.parse(line, None)
             if isinstance(tmp, list):
                 args = tmp
             elif isinstance(tmp, dict):

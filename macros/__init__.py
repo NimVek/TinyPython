@@ -37,7 +37,7 @@ class reload(model.Command):
         regex = re.compile('^macros(\.|$)')
         modules = sys.modules.keys()
         for i in sorted(filter(regex.search, modules), reverse=True):
-            client.eval("/python_load %s" % i)
+            client.evaluate("/python_load %s" % i)
 
 
 client.define(reload)

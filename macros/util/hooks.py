@@ -56,16 +56,15 @@ class remove_from_hook(__HookModifyCommand):
                 remove_hook(hook)
 
 
-class evaluate_hook(__HookModifyCommand):
+class eval_hook(__HookModifyCommand):
     @staticmethod
-    def call(hook, command):
+    def call(hook, command=''):
         if is_hook(hook):
-            #          pprint.pprint('/%s %s' % (_hook_id(hook), command))
-            client.eval('/%s %s' % (_hook_id(hook), command))
+            client.command(_hook_id(hook), command)
 
 
 client.define(is_hook)
 client.define(remove_hook)
 client.define(add_to_hook)
 client.define(remove_from_hook)
-client.define(evaluate_hook)
+client.define(eval_hook)
