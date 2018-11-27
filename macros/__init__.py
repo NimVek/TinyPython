@@ -10,6 +10,9 @@ from . import model
 
 import pprint
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+__log__ = logging.getLogger(__name__)
 
 def wrapper(args):
     macro, arg = args.split(None, 1)
@@ -34,6 +37,7 @@ class reload(model.Command):
 
     @staticmethod
     def call():
+        __log__.info("test2")
         regex = re.compile('^macros(\.|$)')
         modules = sys.modules.keys()
         for i in sorted(filter(regex.search, modules), reverse=True):
@@ -41,3 +45,4 @@ class reload(model.Command):
 
 
 client.define(reload)
+__log__.info("test")
