@@ -2,6 +2,7 @@ import tf
 
 import pprint
 
+
 def evaluate(cmd: str):
     return tf.eval(
         cmd.replace('%', '%%').replace('\\', '\\\\').replace('$', '$$'))
@@ -9,9 +10,9 @@ def evaluate(cmd: str):
 
 def command(cmd: str, options={}, *args):
     result = ['/%s' % cmd]
-    if not isinstance(options,dict):
-      args = [ options, *args ]
-      options = {}
+    if not isinstance(options, dict):
+        args = [options, *args]
+        options = {}
     if options:
         for key, value in sorted(options.items()):
             if key != '-':
@@ -28,8 +29,9 @@ def command(cmd: str, options={}, *args):
                     "\\", "\\\\").replace("\"", "\\\"")))
         result.append('--')
     if args:
-      result.extend(args)
+        result.extend(args)
     return evaluate(' '.join([str(x) for x in result]))
+
 
 cmd = command
 
@@ -91,4 +93,4 @@ def get(name: str, convert=None, default=None):
 
 
 def set(name, value):
-    return command('set','%s=%s' % (name, str(value)))
+    return command('set', '%s=%s' % (name, str(value)))

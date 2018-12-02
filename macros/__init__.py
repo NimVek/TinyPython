@@ -14,6 +14,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 __log__ = logging.getLogger(__name__)
 
+
 def wrapper(args):
     macro, arg = args.split(None, 1)
     pprint.pprint((macro, args))

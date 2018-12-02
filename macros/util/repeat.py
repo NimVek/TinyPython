@@ -46,7 +46,7 @@ class beat(model.Command):
         client.set('do_beat', status)
         client.set('do_beat_%d' % interval, status)
         if next(client.ps('/beat_%d' % interval), None) == None:
-          client.command('beat_%d' % interval)
+            client.command('beat_%d' % interval)
 
 
 client.define(beat)
