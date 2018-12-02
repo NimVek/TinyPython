@@ -37,7 +37,7 @@ cmd = command
 
 
 def test(expression: str):
-    return evaluate("/test %s" % expression)
+    return evaluate("/@test %s" % expression)
 
 
 def define(name, body=None, options=None):
@@ -94,3 +94,11 @@ def get(name: str, convert=None, default=None):
 
 def set(name, value):
     return command('set', '%s=%s' % (name, str(value)))
+
+
+def isvar(name):
+    return test('isvar("%s")' % name)
+
+
+def ismacro(name):
+    return test('ismacro("%s")' % name)
